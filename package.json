@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-blog",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "bootstrap-vue": "^2.21.2",
+    "core-js": "^3.8.3",
+    "nuxt": "^2.14.12",
+    "prism-themes": "^1.5.0",
+    "vue-scrollactive": "^0.9.3",
+    "vue-scrollto": "^2.20.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.11.3",
+    "@nuxt/content": "^1.0.0"
+  }
+}
