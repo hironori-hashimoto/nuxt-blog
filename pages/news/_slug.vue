@@ -2,11 +2,11 @@
   <article class="container mx-auto my-8 px-20 md:px-0">
     <h1 class="text-3xl font-bold my-8">{{ news.title }}</h1>
     <div>
-      <p>date{{ news.date }}</p>
-      <dd>{{ news.description }}</dd>
+      <p>{{ news.date }}</p>
+      <p>{{ news.description }}</p>
     </div>
     <div><img :src="news.image" /></div>
-    <div v-for="tag in news.tags" :key="tag">{{ tag }}</div>
+    <p>{{ news.description }}</p>
     <nuxt-content :document="news" />
   </article>
 </template>
@@ -17,6 +17,11 @@ export default {
     const news = await $content("news", params.slug || "index").fetch();
     return { news };
   },
+  // data() {
+  //   return {
+  //     markdown: "# Hello World!",
+  //   };
+  // },
 };
 </script>
 

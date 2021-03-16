@@ -1,5 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-
+require("dotenv").config()
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -67,9 +67,14 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '~/plugins/vue-scrollto'
-  ],
+  plugins: [{
+    src: '~/plugins/vue-scrollto',
+    src: '~plugins/quill.js',
+    src: "~/plugins/ckeditor.js",
+    src: "~/plugins/vee-validate",
+    mode: "client",
+    ssr: false
+  }, ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -82,13 +87,26 @@ export default {
   target: 'static',
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxt/content'
+    '@nuxt/content',
+    '@nuxtjs/axios'
   ],
+  axios: {
+    baseURL: process.env.BASE_URL || "https://billage.space/wp-json"
+  },
   content: {
     markdown: {
       prism: {
         theme: 'prism-themes/themes/prism-material-oceanic.css'
       }
+    }
+  },
+  generate: {
+    async ready() {
+      const {
+        $content
+      } = require('@nuxt/content')
+      const files = await $content().only(['slug']).fetch()
+      console.log(files)
     }
   },
 
